@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cart-container {
+  width: 90%;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cart-list {
+  margin-top: 20px;
+}
+
+.cart-item {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-item-form input {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background: #0056b3;
+}
