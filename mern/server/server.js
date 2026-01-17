@@ -5,11 +5,16 @@ dotenv.config({ path: "./config.env" });
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
 import records from "./routes/record.js";
 import cartRoutes from "./routes/cartRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 5050;
 const URI = process.env.ATLAS_URI;
@@ -58,6 +63,14 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/users", userRoutes);
+
+// Serve static files from React app
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+// Fallback to React app for any unmatched routes (SPA support)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 // Start server
 app.listen(PORT, () => {

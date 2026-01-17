@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: snapshot-mern
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: npm run install-all && npm run build
+    startCommand: cd mern/server && node server.js
+    envVars:
+      - key: ATLAS_URI
+        scope: build
+        value: $ATLAS_URI
