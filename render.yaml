@@ -4,7 +4,7 @@ services:
     runtime: node
     region: oregon
     plan: free
-    buildCommand: npm run install-all && npm run build
+    buildCommand: cd mern && npm install && cd client && npm install && npm run build && cd ../server && npm install && cd ../..
     startCommand: cd mern/server && node server.js
     envVars:
       - key: ATLAS_URI
